@@ -11,8 +11,8 @@ var express = require('express')
 require('./apps/authentication/configureEveryauth')(everyauth);
 
 var app = express();
-app.configure(function(){
-	
+
+app.configure(function(){	
 	app.set('port', process.env.PORT || 3000);
 	app.set('views', __dirname + '/views');
 	app.engine('ejs', engines.ejs);
@@ -44,7 +44,6 @@ app.configure('production', function() {
 	app.use(express.errorHandler());
 });
 
-everyauth.helpExpress(app);
 require('./apps/home/routes')(app);
 
 http.createServer(app).listen(app.get('port'), function(){

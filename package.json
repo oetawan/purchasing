@@ -6,7 +6,9 @@
     "jade": "*",
     "connect": "~2.5.0",
     "consolidate": "~0.4.0",
-    "everyauth": "~0.3.0"
+    "everyauth": "~0.3.0",
+    "ejs": "~0.8.3",
+    "mongoskin": "~0.4.4"
   },
   "devDependencies": {
     "node-dev": "~0.2.8",

@@ -43,7 +43,7 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
                                     </a>\
                                     <ul class="dropdown-menu dropdown-menu-shipopr">\
                                         <li>\
-                                            <a href="#">\
+                                            <a href="/logout">\
                                                 <i class="icon-off"></i>\
                                                 &nbsp;\
                                                 Log out\

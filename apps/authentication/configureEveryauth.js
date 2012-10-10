@@ -1,56 +1,47 @@
 var path = require('path');
+
+var mongo = require('mongoskin');
+var db = mongo.db('mongodb://zain:fakhri18022010@ds039037.mongolab.com:39037/zain_purchasing',{save: true});
+//db.collection('user').save({id:'oetawan@gmail.com', email:'oetawan@gmail.com', password:'123'});
+
 var configureEveryauth = function(everyauth){
+
+everyauth.everymodule
+  .findUserById( function (id, callback) {
+    callback(null, db.collection('user').findOne({'id': id}));
+  });
 
 everyauth
   .password
     .loginWith('email')
     .getLoginPath('/login')
     .postLoginPath('/login')
-    .loginView('login.ejs')
-//    .loginLocals({
-//      title: 'Login'
-//    })
-//    .loginLocals(function (req, res) {
-//      return {
-//        title: 'Login'
-//      }
-//    })
-    .loginLocals( function (req, res, done) {
-      setTimeout( function () {
-        done(null, {
-          title: 'Async login'
-        });
-      }, 200);
+    .loginView(path.join(__dirname, 'views/login.ejs'))
+    .loginLocals({
+      title: 'Login' 
     })
-    .authenticate( function (login, password) {
+    .authenticate( function (email, password) {
       var errors = [];
-      if (!login) errors.push('Missing login');
+      if (!email) errors.push('Missing login');
       if (!password) errors.push('Missing password');
       if (errors.length) return errors;
-      var user = usersByLogin[login];
-      if (!user) return ['Login failed'];
+      var user;
+      db.collection('user').findOne({id: email}, function(err, result){
+          user = result;
+      });
+      if(!user) {
+        console.log("user not found");
+        errors.push('Missing user');
+        return errors;
+      }
+      console.log("found user => " + user);
+      if (!(user.email === email)) return ['Login failed'];
       if (user.password !== password) return ['Login failed'];
-      return user;
+      return user; 
     })
-
     .getRegisterPath('/register')
     .postRegisterPath('/register')
-    .registerView('register.ejs')
-//    .registerLocals({
-//      title: 'Register'
-//    })
-//    .registerLocals(function (req, res) {
-//      return {
-//        title: 'Sync Register'
-//      }
-//    })
-    .registerLocals( function (req, res, done) {
-      setTimeout( function () {
-        done(null, {
-          title: 'Async Register'
-        });
-      }, 200);
-    })
+    .registerView(path.join(__dirname,'views/register.ejs'))
     .validateRegistration( function (newUserAttrs, errors) {
       var login = newUserAttrs.login;
       if (usersByLogin[login]) errors.push('Login already taken');
