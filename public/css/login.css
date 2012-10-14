@@ -1,3 +1,74 @@
 body {
-	
+	background-image: url("../img/bg-noise-tile.png") repeat;
+}
+
+#footer-floor
+{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 20px;
+	color: #333;
+	position: absolute;
+	bottom: 0px;
+	background: #252525;
+	width: 100%;
+	box-shadow: 0px 0px 3px #333;
+}
+
+#footer-floor p 
+{
+	margin-top: 10px;
+	color: #999;
+}
+
+.form-login
+{
+	margin-top: 5em;
+	margin-right: auto;
+	margin-bottom: 1em;
+	margin-left: auto;
+	width: 31em;
+}
+
+.form-login h1
+{
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	background: -moz-linear-gradient(#6E8491, #405A6A);
+	background: -webkit-linear-gradient(rgba(13, 15, 15, 0.28), #405A6A);
+	border: 1px solid #405A6A;
+	border-bottom-color: #6B808D;
+	border-radius: 3px 3px 0 0;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.7);
+	padding: 8px 18px;
+	margin: 0;
+}
+
+.form-login .formbody
+{
+	padding: 2em;
+	background-color: #EDEFF0;
+	overflow: hidden;
+	border-style: solid;
+	border-width: 1px 1px 2px;
+	border-color: #E9F1F4 #D8DEE2 #D8DEE2;
+	border-radius: 0 0 3px 3px;
+}
+
+.form-login input[type=text], .form-login input[type=password]
+{
+	width: 26em;
+}
+
+.alert
+{
+	width: 27.5em;	
+	margin: 0 auto;
+}
+
+.alert li
+{
+	list-style-type: none;
 }

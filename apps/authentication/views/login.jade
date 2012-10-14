@@ -1,0 +1,53 @@
+!!! 5
+html
+  head
+    title Login - Zain Purchasing
+    link(rel='stylesheet', href='css/bootstrap.min.css')
+    style(type='text/css')
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    link(rel='stylesheet', href='css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href='css/login.css')
+    script(src='lib/jquery-1.7.2.min.js')
+    script(src='lib/bootstrap.min.js')
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a(class='btn btn-navbar', data-toggle='collapse', data-target='.nav-collapse')
+            span(class='icon-bar')
+            span(class='icon-bar')
+            span(class='icon-bar')
+          a(class='brand', href='#') Zain Purchasing
+          .nav-collapse.collapse
+            a(class='btn btn-primary pull-right', href='/register') Sign Up
+    .container
+      .row
+        .span12
+          .form-login
+            form(action='/login', method='post')
+              h1 Sign in
+              .formbody
+                label(for='username') Login
+                  br
+                  input(type='text', name='username', placeholder='username')
+                label(for='password') Password
+                  br
+                  input(type='password', name='password')
+                input(type='submit', value='Login', class='btn btn-primary')
+          - if ('undefined' !== typeof errors && errors.length)
+            .alert
+                button(type='button', class='close', data-dismiss='alert') x
+                ul.errors
+                  - each err in errors
+                    li #{err}
+    #footer-floor
+      .container
+        .row
+          .span12
+            p &copy; 2012 Zain All Right Reserved
