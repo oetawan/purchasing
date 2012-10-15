@@ -7,6 +7,7 @@ module.exports = function (authStore) {
     	usernameField: 'username',
     	passwordField: 'password'
   	},
+  	
   	function(username, password, done){
 		store.findUser(username, function(err, user){
 			if(err) {
