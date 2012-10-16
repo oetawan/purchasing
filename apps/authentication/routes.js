@@ -1,6 +1,25 @@
 var path = require('path');
 
 module.exports = function (app, passport, authStore) {
+
+	app.get('/user/available/:username', function(req, res){
+		var username = req.params.username;
+		authStore.findUser(username, function(err, user){
+			if(err){
+				res.json({available: false, error: err});
+			} else {
+				if(user){
+					res.json({available: false});
+				} else {
+					res.json({available: true});
+				}
+			}
+		});
+	});
+
+	app.get('/user', function(req, res){
+		res.json({username: req.user.login});
+	});
 	
 	app.get('/login', function(req, res){
 		var errors = req.flash().error || [];
@@ -18,6 +37,10 @@ module.exports = function (app, passport, authStore) {
 		failureFlash: true
 	}));
 
+	app.get('/app/register.js', function(req, res){
+		res.sendfile(path.join(__dirname, 'views/register.js'));
+	});
+
 	app.get('/register', function(req, res){
 		res.render(path.join(__dirname, 'views/register.jade'));
 	});
@@ -26,7 +49,7 @@ module.exports = function (app, passport, authStore) {
 		var user;
 		try {
 			user = {
-				username  : req.body.username,
+				login     : req.body.username,
 				password  : req.body.password,
 				phone     : req.body.phone,
 				firstName : req.body.firstName,

@@ -12,9 +12,12 @@ html
         padding: 9px 0;
       }
     link(rel='stylesheet', href='css/bootstrap-responsive.min.css')
-    link(rel='stylesheet', href='css/login.css')
+    link(rel='stylesheet', href='css/register.css')
+    link(rel='stylesheet', href='css/jquery.loadmask.css')
     script(src='lib/jquery-1.7.2.min.js')
+    script(src='lib/jquery.loadmask.min.js')
     script(src='lib/bootstrap.min.js')
+    script(src='/app/register.js')
   body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -23,25 +26,28 @@ html
             span(class='icon-bar')
             span(class='icon-bar')
             span(class='icon-bar')
-          a(class='brand', href='#') Zain Purchasing
+          a(class='brand', href='/') Zain Purchasing
     .container
       .row
         .span12
-          .form-register
+          .form-register(class='well')
             h2 Register
             form(action='/register', method='POST')
               #login
                 label(for='username') Username
                 if ('undefined' !== typeof data)
-                  input(type='text', name='username', placeholder='username', value='#{data.username}')
+                  input(type='text', name='username', placeholder='username', value='#{data.username}', class='username')
                 else
-                  input(type='text', name='username', placeholder='username')
+                  input(type='text', name='username', class='username')
               #password
                 label(for='password') Password
                 if ('undefined' === typeof data)
-                  input(type='password', name='password')
+                  input(type='password', name='password', class='password')
                 else
-                  input(type='password', name='password', value='#{data.password}')
+                  input(type='password', name='password', value='#{data.password}, class='password')
+              #password-match
+                label(for='password-match') Retype password
+                input(type='password', name='password-match', class='password-match')
               #phone
                 label(for='phone') Phone
                 if ('undefined' === typeof data)
@@ -61,10 +67,15 @@ html
                 else
                   input(type='text', name='lastName', value='#{data.lastName}')
               #submit
-                input(type='submit') Register
+                input(type='button', class='btn btn-primary register', value='Register')
             - if ('undefined' !== typeof errors && errors.length)
               .alert
                   button(type='button', class='close', data-dismiss='alert') x
                   ul.errors
                     - each err in errors
                       li #{err}
+    #footer-floor
+      .container
+        .row
+          .span12
+            p &copy; 2012 Zain All Right Reserved

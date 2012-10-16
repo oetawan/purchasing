@@ -22,7 +22,7 @@
 
         require(['jquery', 'underscore', 'backbone', 'controllers/purchasingAppRouter'], function ($, _, Backbone) {
             $(function () {
-                var appRouter = new oac.purchasing.controllers.purchasingAppRouter();
+                var appRouter = new zain.purchasing.controllers.purchasingAppRouter();
                 Backbone.history.start();
             });
         });

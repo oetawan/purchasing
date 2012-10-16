@@ -24,7 +24,7 @@ module.exports = function (authStore) {
 	}));
 
 	passport.serializeUser(function(user, done){
-		done(null, user.username);
+		done(null, user.login);
 	});
 
 	passport.deserializeUser(function(id, done){

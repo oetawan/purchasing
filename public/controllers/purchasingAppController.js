@@ -1,15 +1,17 @@
 define(['jquery',
         'namespace',
         'eventAggregator',
-        'views/NavBar'], function ($, namespace) {
+        'views/NavBar',
+        'models/User'], function ($, namespace) {
 
-	namespace.define('oac.purchasing.controllers');
+	namespace.define('zain.purchasing.controllers');
 
-    oac.purchasing.controllers.purchasingAppController = function () {
+    zain.purchasing.controllers.purchasingAppController = function () {
 	    var showIndex = function () {
     	    $('body').empty();
-	        //var account = shipopr.models.account();
-            $('body').append(new oac.purchasing.views.NavBar({ model: new Backbone.Model({username: 'oetawan'}) }).render().el);
+	        var user = new zain.purchasing.models.User();
+            user.get();
+            $('body').append(new zain.purchasing.views.NavBar({ model: new Backbone.Model({username: user.username}) }).render().el);
         }
 
         return {
@@ -17,5 +19,5 @@ define(['jquery',
        	};
 	}
 
-    return oac;
+    return zain;
 });

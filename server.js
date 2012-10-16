@@ -24,7 +24,8 @@ app.configure(function(){
 	app.use(express.methodOverride());
 	app.use(express.cookieParser());
 	app.use(express.session({
-		secret : "qpwoeirutyalskdjfhgzmxncbv"
+		secret : "qpwoeirutyalskdjfhgzmxncbv",
+		maxAge : new Date(Date.now() + 60000)
   	}));
   	app.use(flash());
   	app.use(passport.initialize());

@@ -1,10 +1,10 @@
 define(['underscore', 'backbone', 'namespace', 'controllers/purchasingAppController'], function (_, Backbone, namespace) {
 
-    namespace.define('oac.purchasing.controllers');
+    namespace.define('zain.purchasing.controllers');
 
-    oac.purchasing.controllers.purchasingAppRouter = Backbone.Router.extend({
+    zain.purchasing.controllers.purchasingAppRouter = Backbone.Router.extend({
         initialize: function () {
-            this.appCtrl = oac.purchasing.controllers.purchasingAppController();
+            this.appCtrl = zain.purchasing.controllers.purchasingAppController();
         },
         routes: {
             '': 'index'
@@ -14,5 +14,5 @@ define(['underscore', 'backbone', 'namespace', 'controllers/purchasingAppControl
         }
     });
 
-    return oac;
+    return zain;
 });

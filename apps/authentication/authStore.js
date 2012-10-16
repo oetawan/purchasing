@@ -4,7 +4,7 @@ module.exports = function(){
 		db = mongoose.createConnection('mongodb://zain:fakhri18022010@ds039037.mongolab.com:39037/zain_purchasing');
 	
 	var UserSchema = new mongoose.Schema({
-		username: String,
+		login: String,
 		password: String,
 		phone: String,
 		firstName: String,
@@ -18,7 +18,7 @@ module.exports = function(){
 	var User = db.model('User', UserSchema),
 	
 	findUser = function(username, callback){
-		User.findOne({username: username}, {username:1, password:1, phone:1, firstName:1, lastName:1}, { safe: true }, function(err, user){
+		User.findOne({login: username}, {login:1, password:1, phone:1, firstName:1, lastName:1}, { safe: true }, function(err, user){
 			callback(err, user);
 		});
 	},

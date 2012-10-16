@@ -1,8 +1,8 @@
 define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbone, namespace) {
 
-    namespace.define('oac.purchasing.views');
+    namespace.define('zain.purchasing.views');
 
-    oac.purchasing.views.NavBar = Backbone.View.extend({
+    zain.purchasing.views.NavBar = Backbone.View.extend({
         tagName: 'div',
         className: 'navbar navbar-fixed-top navbar-shipopr',
         initialize: function () {
@@ -60,5 +60,5 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
         }
     });
 
-    return oac;
+    return zain;
 });
