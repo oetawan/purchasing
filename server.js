@@ -7,7 +7,8 @@ var http = require('http'),
   	flash = require('connect-flash'),
   	path = require('path'),
   	authStore = require(path.join(__dirname, 'apps/authentication/authStore')),
-  	passportAuth = require(path.join(__dirname, 'apps/authentication/passportAuth'));
+  	passportAuth = require(path.join(__dirname, 'apps/authentication/passportAuth')),
+  	MongoStore = require('connect-mongo')(express);
 
 var app = express();
 var store = authStore();
@@ -25,7 +26,11 @@ app.configure(function(){
 	app.use(express.cookieParser());
 	app.use(express.session({
 		secret : "qpwoeirutyalskdjfhgzmxncbv",
-		maxAge : new Date(Date.now() + 60000)
+		maxAge : new Date(Date.now() + 60000),
+		store: new MongoStore({
+			url: 'mongodb://zain:fakhri18022010@ds039037.mongolab.com:39037/zain_purchasing',
+			auto_reconnect: true
+		})
   	}));
   	app.use(flash());
   	app.use(passport.initialize());

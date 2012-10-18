@@ -9,7 +9,9 @@
     "passport": "~0.1.12",
     "passport-local": "~0.1.6",
     "connect-flash": "~0.1.0",
-    "bcrypt": "~0.7.2"
+    "bcrypt": "~0.7.2",
+    "connect-mongodb": "~1.1.5",
+    "connect-mongo": "~0.2.0"
   },
   "devDependencies": {
     "node-dev": "~0.2.8",

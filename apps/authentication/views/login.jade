@@ -15,6 +15,7 @@ html
     link(rel='stylesheet', href='css/login.css')
     script(src='lib/jquery-1.7.2.min.js')
     script(src='lib/bootstrap.min.js')
+    script(src='/app/login.js')
   body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -40,6 +41,11 @@ html
                   br
                   input(type='password', name='password')
                 input(type='submit', value='Login', class='btn btn-primary register')
+                input(type='hidden', value='false', name='remember', class='remember')
+                label(class='remember')
+                  input(type='checkbox', class='chk-remember') 
+                  string(class='remember-label') Remember me
+
           - if ('undefined' !== typeof errors && errors.length)
             .alert
                 button(type='button', class='close', data-dismiss='alert') x
