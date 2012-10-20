@@ -112,7 +112,7 @@
 		var validatePasswordMatch = function(e){
 			var pwd1 = $.trim($('input.password').val());
 			var pwd2 = $.trim($('input.password-match').val());
-			if(pwd1 !== pwd2){
+			if((pwd1 !== pwd2) || pwd1 === ''){
 				e.preventDefault();
 				validPassword = false;
 				$('input.password-match').tooltip('show');
@@ -135,15 +135,15 @@
 			validatePasswordMatch(e);
 		});
 
-		$('input.register').click(function(e){
-			e.preventDefault();
+		$('form').submit(function(e){
 			
 			validateUserName(e);
 			validatePassword(e);
 			validatePasswordMatch(e);
-			
-			if(validUsername && validPassword){
-				$('div.form-register form').submit();
+
+			if(!(validUsername && validPassword)){
+				e.preventDefault();
+				return false;
 			}
 		});
 	});

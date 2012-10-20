@@ -83,6 +83,19 @@ module.exports = function (app, passport, authStore) {
 	app.post('/register', function(req, res){
 		var user;
 		try {
+			console.log(req.body.username.trim());
+			console.log(req.body.password.trim());
+			if(!req.body.username)
+				throw "Username empty";
+			if(!req.body.username.trim())
+				throw "Username empty";
+			if(!req.body.password)
+				throw "Password empty";
+			if(!req.body.password.trim())
+				throw "Password empty";
+			if(req.body.password.trim().length < 3)
+				throw "Min password length is 3";
+
 			user = {
 				login     : req.body.username,
 				password  : req.body.password,

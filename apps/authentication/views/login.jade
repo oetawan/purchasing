@@ -26,7 +26,7 @@ html
             span(class='icon-bar')
           a(class='brand', href='/') Zain Purchasing
           .nav-collapse.collapse
-            a(class='btn btn-inverse pull-right', href='/register') Sign Up
+            a(class='btn btn-success pull-right', href='/register') Sign Up
     .container
       .row
         .span12
@@ -52,8 +52,7 @@ html
                 ul.errors
                   - each err in errors
                     li #{err}
-    #footer-floor
-      .container
-        .row
-          .span12
-            p &copy; 2012 Zain All Right Reserved
+    .navbar.navbar-fixed-bottom.navbar-inverse
+      .navbar-inner
+        .container
+          p &copy; 2012 Zain All Right Reserved

@@ -1,0 +1,8 @@
+body {
+	background-color: #EEE;
+}
+
+.navbar.navbar-fixed-bottom.navbar-inverse p
+{
+	margin-top: 10px;
+}
