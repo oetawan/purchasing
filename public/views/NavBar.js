@@ -27,7 +27,7 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
                                      <span class="icon-bar"></span>\
                                      <span class="icon-bar"></span>\
                                    </a>');
-            containerFluid.append('<a class="brand" href="#">Zain P.O</a>');
+            containerFluid.append('<a class="brand" href="#">Zain Software</a>');
             $('div.navbar-inner', this.$el).append(containerFluid);
         },
         renderNavCollapse: function () {
@@ -60,5 +60,5 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
         }
     });
 
-    return zain;
+    return zain.purchasing.views.NavBar;
 });

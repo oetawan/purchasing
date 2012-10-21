@@ -24,6 +24,8 @@ define(['underscore', 'backbone', 'namespace'], function (_, Backbone, namespace
                     self.username = data.username;
                 }
             });
+
+            return this;
         }
 
         return {
@@ -31,5 +33,5 @@ define(['underscore', 'backbone', 'namespace'], function (_, Backbone, namespace
         }
     }();
 
-    return zain;
+    return zain.purchasing.models.User;
 });

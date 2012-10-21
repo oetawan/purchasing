@@ -16,5 +16,5 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
 		}
 	});
 
-	return zain;
+	return zain.purchasing.views.Footer;
 });

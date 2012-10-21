@@ -6,3 +6,30 @@ body {
 {
 	margin-top: 10px;
 }
+
+div.header-po h1, div.header-po h4
+{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+div.header-po h1
+{
+	font-size: 28px;
+	color: #777;
+}
+
+input.search-query.search-form
+{
+	width: 200px;
+}
+
+button.btn.btn-info.btn-small.search_btn
+{
+	margin-top: 0;
+}
+
+div.subnav
+{
+	margin-top: 10px;
+}

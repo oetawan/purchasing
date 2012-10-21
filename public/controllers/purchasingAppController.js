@@ -3,18 +3,27 @@ define(['jquery',
         'eventAggregator',
         'views/NavBar',
         'views/Footer',
-        'models/User'], function ($, namespace) {
+        'views/HeaderPO',
+        'views/Panel',
+        'views/SubNav',
+        'models/User'], function ($, namespace, bus, NavBar, Footer, HeaderPO, Panel, SubNav, User) {
 
 	namespace.define('zain.purchasing.controllers');
 
     zain.purchasing.controllers.purchasingAppController = function () {
-	    var showIndex = function () {
-    	    $('body').empty();
-	        var user = new zain.purchasing.models.User();
-            user.get();
-            $('body').append(new zain.purchasing.views.NavBar({ model: new Backbone.Model({username: user.username}) }).render().el);
-            $('body').append(new zain.purchasing.views.Footer().render().el);            
-        }
+        var user = new User().get(),
+            navBar = new NavBar({ model: new Backbone.Model({username: user.username}) }),
+            headerPO = new HeaderPO(),
+            subNav = new SubNav();
+            footer = new Footer(),
+            mainPanel = new Panel({items:[headerPO, subNav]});
+
+	    showIndex = function () {
+            $('body').empty();
+            $('body').append(navBar.render().el);
+            $('body').append(mainPanel.render().el);
+            $('body').append(footer.render().el);
+        };
 
         return {
  	       showIndex: showIndex
