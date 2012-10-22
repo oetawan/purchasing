@@ -1,5 +1,5 @@
 body {
-	background-color: #EEE;
+	/*background-color: whitesmoke;*/
 }
 
 .navbar.navbar-fixed-bottom.navbar-inverse p
@@ -13,10 +13,26 @@ div.header-po h1, div.header-po h4
 	margin-bottom: 0;
 }
 
+div.row.productview h5
+{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 div.header-po h1
 {
 	font-size: 28px;
 	color: #777;
+}
+
+div.header-po .cart
+{
+	text-align: right;
+}
+
+div.header-po h4
+{
+	color: #777;	
 }
 
 input.search-query.search-form
@@ -32,4 +48,53 @@ button.btn.btn-info.btn-small.search_btn
 div.subnav
 {
 	margin-top: 10px;
+}
+
+ul.breadcrumb.categoryview
+{
+	/*-webkit-box-shadow: 0 0px 3px rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 0px 3px rgba(0,0,0,.25);
+	box-shadow: 0 0px 3px rgba(0, 0, 0, .25);*/
+}
+
+.product-list
+{
+	margin-top: -5px;
+	margin-left: 5px;
+	min-height: 500px;
+}
+
+.product-list > div > ul > li
+{
+	padding: 8px 8px 8px 0px;
+}
+
+.product-list ul {
+	list-style: none;
+	margin: 0;
+}
+
+.product-list > div > ul > li a.active {
+	font-weight: bold;
+}
+
+.product-list > div > ul > li > a {
+	text-decoration: none;
+}
+
+.product-list > div > ul > li + li {
+	border-top: 1px solid #EEE;
+	margin-right: 10px;
+}
+
+div.jstree.jstree-0.jstree-focused.jstree-default
+{
+	background-color: white;
+}
+
+div.productview div.image-content
+{
+	width: 60px;
+	height: auto;
+	overflow: hidden;
 }

@@ -11,7 +11,9 @@
     }
 
     function loadPluginsAndBoot() {
-        requirejs([], boot);
+        requirejs(['/lib/jstree/jquery.jstree.js',
+                   '/lib/jstree/_lib/jquery.cookie.js',
+                   '/lib/jstree/_lib/jquery.hotkeys.js'], boot);
     }
 
     function boot() {

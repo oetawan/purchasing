@@ -3,10 +3,11 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
     namespace.define('zain.purchasing.views');
 	
 	zain.purchasing.views.SubNav = Backbone.View.extend({
-		className: 'row-fluid subnav',
+		className: 'row subnav',
 		render: function(){
 			this.$el.empty();
 			this.renderContainer();
+			this.renderNavItems();
 			this.renderSearchBar();
 			return this;
 		},
@@ -25,6 +26,23 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
 								 	</div>\
 								</div>\
 							 </div>");
+		},
+		renderNavItems: function(){
+			var html = '<ul class="nav">\
+							<li class="dropdown">\
+							  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Desktops <b class="caret"></b></a>\
+							  <ul class="dropdown-menu">\
+								<li><a href="#">PC</a></li>\
+								<li><a href="#">Mac</a></li>\
+								<li class="divider"></li>\
+								<li class="nav-header">Accessories</li>\
+								<li><a href="#">Keyboard</a></li>\
+								<li><a href="#">Speakers</a></li>\
+							  </ul>\
+							</li>\
+							<li><a href="#">Laptops</a></li>\
+						</ul>'
+			$('.nav-collapse', this.$el).append(html);
 		},
 		renderSearchBar: function(){
 			var html = '<ul class="nav pull-right">\

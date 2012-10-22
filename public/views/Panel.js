@@ -3,7 +3,7 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
     namespace.define('zain.purchasing.views');
 	
 	zain.purchasing.views.Panel = Backbone.View.extend({
-		className: 'container-fluid',
+		className: 'container',
 		render: function(){
 			this.$el.empty();
 			this.options.items.forEach(function(item){

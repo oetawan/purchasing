@@ -3,7 +3,7 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
     namespace.define('zain.purchasing.views');
 	
 	zain.purchasing.views.HeaderPO = Backbone.View.extend({
-		className: 'row-fluid header-po',
+		className: 'row header-po',
 		render: function(){
 			this.$el.empty();
 			this.renderLogo();
@@ -15,15 +15,15 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
 		},
 		renderCart: function(){
 			this.$el.append("<div class='span8'>\
-							    <div class='span4'> </div>\
-								<div class='span2 pull-right'>\
+							    <div class='span5'> </div>\
+							    <div class='span2 pull-right cart'>\
+									<a href='#'><h4>Order</h4></a>\
+									<a href='#'>3 Item(s) - $40</a>\
+								</div>\
+								<div class='span1 pull-right'>\
 									<h4>Currency</h4>\
 									<a href='#'>IDR</a> | \
 									<a href='#'>USD</a>\
-								</div>\
-								<div class='span2 pull-right'>\
-									<a href='#'><h4>Order</h4></a>\
-									<a href='#'>3 Item(s) - $40</a>\
 								</div>\
 							 </div>");
 		}
