@@ -13,7 +13,8 @@
     function loadPluginsAndBoot() {
         requirejs(['/lib/jstree/jquery.jstree.js',
                    '/lib/jstree/_lib/jquery.cookie.js',
-                   '/lib/jstree/_lib/jquery.hotkeys.js'], boot);
+                   '/lib/jstree/_lib/jquery.hotkeys.js',
+                   '/lib/jquery-loadmask/jquery.loadmask.min.js'], boot);
     }
 
     function boot() {

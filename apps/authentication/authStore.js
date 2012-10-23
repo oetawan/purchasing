@@ -1,7 +1,7 @@
 module.exports = function(){
 	var bcrypt = require('bcrypt'),
 		mongoose = require('mongoose'),
-		db = mongoose.createConnection('mongodb://zain:fakhri18022010@ds039037.mongolab.com:39037/zain_purchasing');
+		db = mongoose.createConnection('mongodb://oetawan:fakhri18022010@ds031587.mongolab.com:31587/zain_account');
 	
 	var UserSchema = new mongoose.Schema({
 		login: String,

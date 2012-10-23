@@ -7,6 +7,9 @@ define(['jquery',
     namespace.define('zain.purchasing.views');
 	
 	zain.purchasing.views.CategoryView = Backbone.View.extend({
+		initialize: function(){
+			this.collection.on('reset',	this.addAllCategories, this);
+		},
 		render: function(){
 			this.addAllCategories();
 			return this;

@@ -28,7 +28,7 @@ app.configure(function(){
 		secret : "qpwoeirutyalskdjfhgzmxncbv",
 		maxAge : new Date(Date.now() + 60000),
 		store: new MongoStore({
-			url: 'mongodb://zain:fakhri18022010@ds039037.mongolab.com:39037/zain_purchasing',
+			url: 'mongodb://oetawan:fakhri18022010@ds031587.mongolab.com:31587/zain_account',
 			auto_reconnect: true
 		})
   	}));
@@ -54,8 +54,9 @@ app.configure('production', function() {
 	app.use(express.errorHandler());
 });
 
-require('./apps/home/routes')(app);
 require('./apps/authentication/routes')(app, passport, store);
+require('./apps/home/routes')(app);
+require('./apps/category/routes')(app, passport);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

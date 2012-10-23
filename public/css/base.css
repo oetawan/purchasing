@@ -60,7 +60,7 @@ ul.breadcrumb.categoryview
 .product-list
 {
 	margin-top: -5px;
-	margin-left: 5px;
+	margin-left: 0;
 	min-height: 500px;
 }
 
@@ -87,9 +87,8 @@ ul.breadcrumb.categoryview
 	margin-right: 10px;
 }
 
-div.jstree.jstree-0.jstree-focused.jstree-default
-{
-	background-color: white;
+div.jstree.jstree-1.jstree-focused.jstree-default {
+	background: white;
 }
 
 div.productview div.image-content

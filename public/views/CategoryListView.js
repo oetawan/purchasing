@@ -7,7 +7,7 @@ define(['jquery',
     namespace.define('zain.purchasing.views');
 	
 	zain.purchasing.views.CategoryListView = Backbone.View.extend({
-		className: 'span3',
+		className: 'span3 categorylistview',
 		render: function(){
 			this.$el.empty();
 			this.renderBreadcrumb();
