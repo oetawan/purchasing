@@ -4,4 +4,5 @@ define(['jquery', 'underscore', 'backbone', 'namespace'], function ($, _, Backbo
 
     zain.purchasing.eventAggregator = zain.purchasing.eventAggregator || _.extend({}, Backbone.Events);
 
+    return zain.purchasing.eventAggregator;
 });

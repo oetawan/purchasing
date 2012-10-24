@@ -3,7 +3,7 @@ module.exports = function(){
 		db = mongoose.createConnection('mongodb://oetawan:fakhri18022010@ds029787.mongolab.com:29787/zain_product'),
 	
 		CategorySchema = new mongoose.Schema({
-			type: {type: String, required: true},
+			owner: {type: String, required: true},
 			code: {type: String, required: true},
 			name: {type: String, required: true},
 			categories: []
@@ -12,18 +12,14 @@ module.exports = function(){
 		Category = db.model('Category', CategorySchema),
 	
 		findAll = function(username, callback){
-			Category.find({type:'Category'}, {code:1, name:1, categories: 1}, { safe: true , collection: 'test'}, function(err,cats){
+			Category.find({owner: username}, {owner: 1, code:1, name:1, categories: 1}, { safe: true }, function(err,cats){
 				if(cats.length === 0){
-					var newCategory = new Category({type: 'Category', code: 'NEW', name: 'New category', categories: []});
+					var newCategory = new Category({owner: username, code: 'NEW', name: 'New category', categories: []});
 					newCategory.save(function(err, cat){
-						console.log(err);
-						console.log(cat);
 						callback(err, [cat]);
 					});
 				}
 				else {
-					console.log(err);
-					console.log(cats);
 					callback(err,cats);
 				}
 			});

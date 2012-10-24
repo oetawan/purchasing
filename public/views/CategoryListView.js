@@ -2,12 +2,19 @@ define(['jquery',
 		'underscore', 
 		'backbone', 
 		'namespace',
-		'views/CategoryView'], function ($, _, Backbone, namespace, CategoryView) {
+		'views/CategoryView',
+		'eventAggregator'], function ($, _, Backbone, namespace, CategoryView, bus) {
 
     namespace.define('zain.purchasing.views');
 	
 	zain.purchasing.views.CategoryListView = Backbone.View.extend({
 		className: 'span3 categorylistview',
+		events: {
+			'click .new-category': function(e) {
+				e.preventDefault();
+				bus.trigger('category:new');
+			}
+		},
 		render: function(){
 			this.$el.empty();
 			this.renderBreadcrumb();
@@ -17,7 +24,7 @@ define(['jquery',
 		},
 		renderBreadcrumb: function(){
 			var html = '<ul class="breadcrumb categoryview">\
-    						<li>Categories</li>\
+    						<li>Categories <a href="#" class="new-category"><i class="icon-plus"></i></a></li>\
 						</ul>';
 			this.$el.append(html);
 		},

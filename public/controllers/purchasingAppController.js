@@ -12,7 +12,8 @@ define(['jquery',
         'models/User',
         'models/CategoryList',
         'underscore',
-        'backbone'], function ($, namespace, bus, NavBar, Footer, HeaderPO, Panel, SubNav, CategoryProductView, CategoryListView, ProductListView, User, CategoryList, _, Backbone) {
+        'backbone',
+        'bootbox'], function ($, namespace, bus, NavBar, Footer, HeaderPO, Panel, SubNav, CategoryProductView, CategoryListView, ProductListView, User, CategoryList, _, Backbone, bootbox) {
 
 	namespace.define('zain.purchasing.controllers');
 
@@ -80,6 +81,17 @@ define(['jquery',
 
             loadData();
         };
+
+        bus.on('category:new', function(){
+            var html = "<input type='text'></input>";
+            bootbox.dialog(html, {
+                "label" : "Click me!",
+                "class" : "primary",   // or primary, or danger, or nothing at all
+                "callback": function() {
+                    console.log("great success");
+                }
+            });
+        }, this);
 
         return {
  	       showIndex: showIndex
