@@ -23,9 +23,17 @@ module.exports = function(){
 					callback(err,cats);
 				}
 			});
+		},
+
+		save = function(category, callback){
+			var newCat = new Category(category);
+			newCat.save(function(err, category){
+				callback(err, category);
+			});
 		};
 
 	return {
-		findAll: findAll
+		findAll: findAll,
+		save: save
 	};
 }

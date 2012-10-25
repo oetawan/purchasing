@@ -11,9 +11,10 @@ define(['jquery',
         'views/ProductListView',
         'models/User',
         'models/CategoryList',
+        'controllers/newCategoryController',
         'underscore',
         'backbone',
-        'bootbox'], function ($, namespace, bus, NavBar, Footer, HeaderPO, Panel, SubNav, CategoryProductView, CategoryListView, ProductListView, User, CategoryList, _, Backbone, bootbox) {
+        'bootbox'], function ($, namespace, bus, NavBar, Footer, HeaderPO, Panel, SubNav, CategoryProductView, CategoryListView, ProductListView, User, CategoryList, newCategoryCtrl, _, Backbone, bootbox) {
 
 	namespace.define('zain.purchasing.controllers');
 
@@ -61,6 +62,7 @@ define(['jquery',
             }),
             footer = new Footer(),
             mainPanel = new Panel({items:[headerPO, subNav, categoryProductView]}),
+            newCatCtrl = newCategoryCtrl();
 
         loadData = function(){
             catList.fetch({
@@ -81,17 +83,6 @@ define(['jquery',
 
             loadData();
         };
-
-        bus.on('category:new', function(){
-            var html = "<input type='text'></input>";
-            bootbox.dialog(html, {
-                "label" : "Click me!",
-                "class" : "primary",   // or primary, or danger, or nothing at all
-                "callback": function() {
-                    console.log("great success");
-                }
-            });
-        }, this);
 
         return {
  	       showIndex: showIndex
