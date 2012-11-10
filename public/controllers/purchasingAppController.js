@@ -10,11 +10,12 @@ define(['jquery',
         'views/CategoryListView',
         'views/ProductListView',
         'models/User',
+        'models/Category',
         'models/CategoryList',
         'controllers/newCategoryController',
         'underscore',
         'backbone',
-        'bootbox'], function ($, namespace, bus, NavBar, Footer, HeaderPO, Panel, SubNav, CategoryProductView, CategoryListView, ProductListView, User, CategoryList, newCategoryCtrl, _, Backbone, bootbox) {
+        'bootbox'], function ($, namespace, bus, NavBar, Footer, HeaderPO, Panel, SubNav, CategoryProductView, CategoryListView, ProductListView, User, Category, CategoryList, newCategoryCtrl, _, Backbone, bootbox) {
 
 	namespace.define('zain.purchasing.controllers');
 
@@ -83,6 +84,10 @@ define(['jquery',
 
             loadData();
         };
+
+        bus.on('category:added', function(category){
+            catList.fetch();
+        }, this);
 
         return {
  	       showIndex: showIndex

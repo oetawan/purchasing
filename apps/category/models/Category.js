@@ -4,12 +4,14 @@ module.exports = function(){
 	
 		CategorySchema = new mongoose.Schema({
 			owner: {type: String, required: true},
-			code: {type: String, required: true},
-			name: {type: String, required: true},
+			code:  {type: String, required: true},
+			name:  {type: String, required: true},
 			categories: []
-		}),
+		});
 
-		Category = db.model('Category', CategorySchema),
+		CategorySchema.index({owner: 1, code: 1}, {unique: true});
+
+		var Category = db.model('Category', CategorySchema),
 	
 		findAll = function(username, callback){
 			Category.find({owner: username}, {owner: 1, code:1, name:1, categories: 1}, { safe: true }, function(err,cats){

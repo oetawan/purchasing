@@ -98,7 +98,7 @@ ul.breadcrumb.categoryview
 	margin-right: 10px;
 }
 
-div.jstree.jstree-1.jstree-focused.jstree-default {
+div.jstree.jstree-focused.jstree-default, div.jstree.jstree-focused.jstree-default {
 	background: white;
 }
 
@@ -122,10 +122,10 @@ a.new-category
 	top: 0px;
 }
 
-.widget-header {
-	position: relative;
+.modal-header {
+	/*position: relative;
 	height: 40px;
-	line-height: 40px;
+	line-height: 40px;*/
 	background: #E9E9E9;
 	background: -moz-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#E9E9E9));
@@ -166,4 +166,19 @@ input.new-category-field
 div.modal-header
 {
 	color: #777
+}
+
+.hide
+{
+	display: none;
+}
+
+.plus-button
+{
+	opacity: 0.5;
+}
+
+.plus-button:hover
+{
+	opacity: 1;
 }

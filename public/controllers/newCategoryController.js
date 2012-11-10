@@ -4,41 +4,68 @@ define(['jquery',
         'underscore',
         'backbone',
         'bootbox',
-        'models/Category'], function ($, namespace, bus, _, Backbone, bootbox, Category) {
+        'models/Category',
+        'views/NewCategoryView'], function ($, namespace, bus, _, Backbone, bootbox, Category, NewCategoryView) {
 
 	namespace.define('zain.purchasing.controllers');
 
     zain.purchasing.controllers.newCategoryController = function () {
-
-    	var creatNewCategory = function(categoryName){
-    		var cat = new Category({code: categoryName, name: categoryName});
-    		cat.save({}, {
-    			success: function(data){
-    				console.log(data);
+        
+        var newCatView;
+        var newCategory;
+        
+        var parseErrorMessage = function(responseText){
+            var err = JSON.parse(responseText);
+            var result = [];
+            if(err.name === 'ValidationError'){
+                for(var e in err.errors) {
+                    if(err.errors.hasOwnProperty(e)){
+                        result.push(e + ': ' + err.errors[e]['type']);
+                    }
+                }
+            } else if(err.name === 'MongoError'){
+                result.push(err.err);
+            } else {
+                result.push(responseText);
+            }
+            
+            return result;
+        };
+        
+        var createNewCategory = function(callback){
+            newCatView.clearError();
+    		newCategory.save({}, {
+                async: false,
+                success: function(category){
+                    bus.trigger('category:added', category);
+                    callback(true);
     			},
-    			error: function(){
-    				console.log(arguments);
+    			error: function(model, response){
+                    newCatView.showError(parseErrorMessage(response.responseText));
+                    callback(false);
     			}
     		});
-    	}
+    	};
 
     	var show = function(){
-    		var html = "<input type='text' class='new-category-field'></input>";
-            bootbox.dialog(html, 
+            newCategory = new Category();
+            newCatView = new NewCategoryView({model: newCategory}).render();
+
+    		bootbox.dialog(newCatView.el, 
             	[
             		{
 	                	"label" : "Create Category",
 	                	"callback": function(e) {
-	                		creatNewCategory($('input.new-category-field').val());
-	                		return false;
+                            var result;
+                            createNewCategory(function(success){
+                                result = success;
+                            });
+                            return result;
 	                	}
 	                },
 	                {
 	                	"label" : "Cancel",
-	                	"class" : "primary",   // or primary, or danger, or nothing at all
-	                	"callback": function() {
-	                    	console.log("Cancel");
-	                	}	
+	                	"class" : "primary"
 	                }
 	            ],
 	            {

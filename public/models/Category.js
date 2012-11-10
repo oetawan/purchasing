@@ -5,8 +5,8 @@ define(['underscore', 'backbone', 'namespace'], function (_, Backbone, namespace
     zain.purchasing.models.Category = Backbone.Model.extend({
         urlRoot: '/categories',
         defaults: {
-            code: 'NONE',
-            name: 'NONE'
+            code: '',
+            name: ''
         }
     });
     

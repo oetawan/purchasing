@@ -14,14 +14,20 @@ module.exports = function(app, passport){
 	});
 
     app.post('/categories', function(req, res){
-        category.save({
-            code: req.body.code,
-            name: req.body.name
-        }, function(err, category){
-            if(err)
-                res.send(err.message, 500);
-            else
-                res.json(category);
-        });
+        if(!req.isAuthenticated()){
+            res.redirect('/login');   
+        } else {
+            category.save({
+                owner: req.user.login,
+                code: req.body.code,
+                name: req.body.name
+            }, function(err, category){
+                if(err){
+                    res.send(err, 500);
+                }
+                else
+                    res.json(category);
+            });
+        };
     });
 };

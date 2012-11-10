@@ -24,7 +24,7 @@ define(['jquery',
 		},
 		renderBreadcrumb: function(){
 			var html = '<ul class="breadcrumb categoryview">\
-    						<li>Categories <a href="#" class="new-category"><i class="icon-plus"></i></a></li>\
+    						<li>Categories <a href="#" class="new-category"><i class="icon-plus plus-button"></i></a></li>\
 						</ul>';
 			this.$el.append(html);
 		},
